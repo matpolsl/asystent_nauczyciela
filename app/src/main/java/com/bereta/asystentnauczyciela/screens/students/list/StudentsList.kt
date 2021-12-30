@@ -4,30 +4,26 @@ package com.bereta.asystentnauczyciela.screens.students.list
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
-
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-
 import androidx.lifecycle.ViewModelProvider
-
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bereta.asystentnauczyciela.R
 import com.bereta.asystentnauczyciela.room.entities.Student
-import com.bereta.asystentnauczyciela.room.entities.Subject
+import com.bereta.asystentnauczyciela.screens.students.SharedViewModelStudent
 import com.bereta.asystentnauczyciela.screens.students.add.AddStudent
-import com.bereta.asystentnauczyciela.screens.subjects.list.SubjectsListAdapter
-import com.bereta.asystentnauczyciela.screens.subjects.list.SubjectsListViewModel
 
 
 
 class StudentsList : Fragment() {
     lateinit var viewModel: StudentsListViewModel
-
+    private val sharedViewModel: SharedViewModelStudent by activityViewModels<SharedViewModelStudent>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,8 +36,7 @@ class StudentsList : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val factory = StudentsListViewModelFactory((requireNotNull(this.activity).application))
         viewModel= ViewModelProvider(requireActivity(),factory)[StudentsListViewModel::class.java]
-        val studentsListAdapter= StudentsListAdapter(viewModel.students,viewModel)
-
+        val studentsListAdapter= StudentsListAdapter(viewModel.students,sharedViewModel,viewModel)
         viewModel.students.observe(viewLifecycleOwner,
             Observer<List<Student>> { studentsListAdapter.notifyDataSetChanged() }
         )

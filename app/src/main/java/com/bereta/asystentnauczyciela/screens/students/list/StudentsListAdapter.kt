@@ -7,13 +7,15 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bereta.asystentnauczyciela.R
 import com.bereta.asystentnauczyciela.room.entities.Student
+import com.bereta.asystentnauczyciela.screens.students.SharedViewModelStudent
 
 
-
-class StudentsListAdapter(private val student: LiveData<List<Student>>, private val viewModel: StudentsListViewModel)
+class StudentsListAdapter(private val student: LiveData<List<Student>>,private  val sharedViewModel: SharedViewModelStudent, private val viewModel: StudentsListViewModel)
     : RecyclerView.Adapter<StudentsListAdapter.StudentsListHolder>() {
 
 
@@ -46,10 +48,9 @@ class StudentsListAdapter(private val student: LiveData<List<Student>>, private 
 
         }
         holder.buttonShow.setOnClickListener {
-            //model = ViewModelProvider(SubjectsListViewModel()).get(SharedViewModel::class.java)
             student.value?.let { existingStudent ->
-                //sharedViewModel.select(existingStudent.get(position))
-                //it.findNavController().navigate(R.id.action_subjectsList_to_subject)
+                sharedViewModel.select(existingStudent.get(position))
+                it.findNavController().navigate(R.id.action_studentsList_to_studentPage)
             }
 
         }

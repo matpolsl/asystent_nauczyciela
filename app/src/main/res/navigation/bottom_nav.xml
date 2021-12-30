@@ -24,7 +24,11 @@
     <fragment
         android:id="@+id/studentsList"
         android:name="com.bereta.asystentnauczyciela.screens.students.list.StudentsList"
-        android:label="StudentsList" />
+        android:label="StudentsList" >
+        <action
+            android:id="@+id/action_studentsList_to_studentPage"
+            app:destination="@id/studentPage" />
+    </fragment>
     <fragment
         android:id="@+id/settings"
         android:name="com.bereta.asystentnauczyciela.screens.settings.settings"
@@ -39,4 +43,13 @@
         android:name="com.bereta.asystentnauczyciela.screens.subjects.home.Subject"
         android:label="fragment_subject"
         tools:layout="@layout/fragment_subject" />
+    <fragment
+        android:id="@+id/studentPage"
+        android:name="com.bereta.asystentnauczyciela.screens.students.home.StudentPage"
+        android:label="fragment_student"
+        tools:layout="@layout/fragment_student" >
+        <action
+            android:id="@+id/action_studentPage_to_studentsList"
+            app:destination="@id/studentsList" />
+    </fragment>
 </navigation>

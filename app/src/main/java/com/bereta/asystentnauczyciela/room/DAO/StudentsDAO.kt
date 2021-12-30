@@ -1,16 +1,16 @@
 package com.bereta.asystentnauczyciela.room.DAO
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.bereta.asystentnauczyciela.room.entities.Student
 
 @Dao
 interface StudentsDAO {
     @Insert
     fun insertStudent(student: Student)
+
+    @Update
+    fun updateStudent(student: Student)
 
     @Delete
     fun deleteStudent(student: Student)
