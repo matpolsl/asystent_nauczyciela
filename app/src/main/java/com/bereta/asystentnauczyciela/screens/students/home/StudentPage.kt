@@ -31,11 +31,10 @@ class StudentPage : Fragment() {
         tabLayout = view.findViewById(R.id.tabLayoutStudent)
         TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
             when(position){
-                0 -> tab.text = "Edycja Studenta"
-                1 -> tab.text = "Dodawanie Przedmiotów"
-                2 -> tab.text = "Usuwanie Przedmiotów"
+                0 -> tab.text = "Edycja\nStudenta"
+                1 -> tab.text = "Dodawanie\nPrzedmiotów"
+                2 -> tab.text = "Usuwanie\nPrzedmiotów"
             }
-            tab.text = tab.text
         }.attach()
     }
 }

@@ -18,14 +18,10 @@ class StudentsListViewModel(
     private val studentsDAO : StudentsDAO = AssistantDatabase.getInstance(application).studentsDAO
     val students: LiveData<List<Student>> = studentsDAO.getAll()
 
-
-
     fun deleteStudent(student: Student)
     {
         viewModelScope.launch(Dispatchers.IO) {
             studentsDAO.deleteStudent(student)
         }
     }
-
-
 }

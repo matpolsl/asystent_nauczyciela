@@ -15,6 +15,4 @@ class StudentsListViewModelFactory(
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
-
-
 }

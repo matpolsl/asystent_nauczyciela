@@ -8,9 +8,9 @@ import com.bereta.asystentnauczyciela.room.DAO.StudentsDAO
 import com.bereta.asystentnauczyciela.room.DAO.SubjectsDAO
 import com.bereta.asystentnauczyciela.room.entities.Student
 import com.bereta.asystentnauczyciela.room.entities.Subject
-import com.bereta.asystentnauczyciela.room.entities.StudentWithSubjects
+import com.bereta.asystentnauczyciela.room.entities.StudentSubjects
 
-@Database(entities=[Subject::class,Student::class], version = 1, exportSchema = false)
+@Database(entities=[Subject::class,Student::class,StudentSubjects::class], version = 2, exportSchema = false)
 abstract class AssistantDatabase: RoomDatabase() {
     abstract val subjectsDAO: SubjectsDAO
     abstract val studentsDAO: StudentsDAO

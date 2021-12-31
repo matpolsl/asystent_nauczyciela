@@ -11,7 +11,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Student(
     @PrimaryKey(autoGenerate = false)
-    @ColumnInfo(name="id")
+    @ColumnInfo(name="studentID")
     var ID: Int,
     @ColumnInfo(name="first_name")
     var firstName:String,

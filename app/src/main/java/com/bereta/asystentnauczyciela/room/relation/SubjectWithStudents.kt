@@ -8,12 +8,12 @@ import com.bereta.asystentnauczyciela.room.entities.StudentSubjects
 import com.bereta.asystentnauczyciela.room.entities.Subject
 
 
-data class StudentWithSubjects(
-    @Embedded val student: Student,
+data class SubjectWithStudents(
+    @Embedded val subject: Subject,
     @Relation(
-        parentColumn = "studentID",
-        entityColumn = "subjectID",
+        parentColumn = "subjectID",
+        entityColumn = "studentID",
         associateBy = Junction(StudentSubjects::class)
     )
-    val subjects: List<Subject>
+    val students: List<Student>
 )

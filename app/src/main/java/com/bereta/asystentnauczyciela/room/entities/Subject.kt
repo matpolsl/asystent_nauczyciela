@@ -11,7 +11,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Subject(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name="id")
+    @ColumnInfo(name="subjectID")
     var ID: Long=0L,
     @ColumnInfo(name="name")
     var name:String,

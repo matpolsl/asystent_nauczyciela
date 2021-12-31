@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.bereta.asystentnauczyciela.screens.students.edit.EditStudent
+import com.bereta.asystentnauczyciela.screens.students.edit.subjects.AddSubjectsStudent
+import com.bereta.asystentnauczyciela.screens.students.edit.subjects.RmSubjectsStudent
 import com.bereta.asystentnauczyciela.screens.students.list.StudentsList
 import com.bereta.asystentnauczyciela.screens.subjects.add.AddSubject
 
@@ -19,10 +21,10 @@ class PagerAdapterStudent(fragment: Fragment) : FragmentStateAdapter(fragment) {
                  fragment = EditStudent()
              }
             1 -> {
-                 fragment = AddSubject()
+                 fragment = AddSubjectsStudent()
              }
             2 -> {
-                fragment = EditStudent()
+                fragment = RmSubjectsStudent()
             }
         }
 
