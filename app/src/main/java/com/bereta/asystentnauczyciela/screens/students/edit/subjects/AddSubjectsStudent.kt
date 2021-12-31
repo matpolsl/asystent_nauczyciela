@@ -1,11 +1,9 @@
 package com.bereta.asystentnauczyciela.screens.students.edit.subjects
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -13,13 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bereta.asystentnauczyciela.R
-import com.bereta.asystentnauczyciela.room.entities.Student
 import com.bereta.asystentnauczyciela.room.entities.Subject
 import com.bereta.asystentnauczyciela.screens.students.SharedViewModelStudent
-import com.bereta.asystentnauczyciela.screens.students.add.AddStudent
-import com.bereta.asystentnauczyciela.screens.students.list.StudentsListAdapter
-import com.bereta.asystentnauczyciela.screens.students.list.StudentsListViewModel
-import com.bereta.asystentnauczyciela.screens.students.list.StudentsListViewModelFactory
 
 
 class AddSubjectsStudent: Fragment() {
@@ -40,7 +33,6 @@ class AddSubjectsStudent: Fragment() {
         viewModel.subjectsNotJoined.observe(viewLifecycleOwner,
             Observer<List<Subject>> { addSubjectsStudentAdapter.notifyDataSetChanged() }
         )
-        Log.d("SQL",viewModel.subjectsNotJoined.value.toString())
         val layoutManager= LinearLayoutManager(view.context)
         view.findViewById<RecyclerView>(R.id.recycleView_student_subjects).let {
             it.adapter=addSubjectsStudentAdapter
