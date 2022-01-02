@@ -4,15 +4,15 @@
         android:id="@+id/subjectsList"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_school_24"
-        android:title="Przedmioty"/>
+        android:title="@string/subjects"/>
     <item
         android:id="@+id/studentsList"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_person_24"
-        android:title="Studenci"/>
+        android:title="@string/students"/>
     <item
         android:id="@+id/settings"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_settings_24"
-        android:title="Ustawienia"/>
+        android:title="@string/settings"/>
 </menu>
