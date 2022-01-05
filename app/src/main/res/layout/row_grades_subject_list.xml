@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <!-- A CardView that contains a TextView -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardLotusTemple"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/ic_baseline_assignment_24" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:background="@android:color/white"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/name_grades"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp"
+                        android:text="Oceny końcowe"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                        android:textColor="#666666" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        >
+
+                        <TextView
+                            android:id="@+id/weight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginBottom="15dp"
+                            android:text="Waga: 100"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                            android:textColor="#999999" />
+                    </LinearLayout>
+                </LinearLayout>
+                <Button
+                    android:id="@+id/button_delete_grades"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:drawableEnd="@drawable/ic_baseline_delete_24"
+                    android:layout_marginEnd="10dp"
+                    android:drawableTint="#FF5858" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/show_grades"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pokaż oceny" />
+        </LinearLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

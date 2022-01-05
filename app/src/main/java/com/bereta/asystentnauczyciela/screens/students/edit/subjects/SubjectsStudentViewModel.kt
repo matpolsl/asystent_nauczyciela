@@ -28,10 +28,10 @@ class SubjectsStudentViewModel(
     private fun getCurrentStudent() = student.value!!
     var currentSubjectsJoined: LiveData<List<Subject>> = studentWithSubjectsDAO.getStudentWithSubjects(getCurrentStudent().ID)
     var currentSubjectsNotJoined: LiveData<List<Subject>> = studentWithSubjectsDAO.getStudentWithSubjects(getCurrentStudent().ID)
-    fun getSubjectsJoined(id: Int) {
+    private fun getSubjectsJoined(id: Int) {
         currentSubjectsJoined = studentWithSubjectsDAO.getStudentWithSubjects(id)
     }
-    fun getSubjectsNotJoined(id: Int) {
+    private fun getSubjectsNotJoined(id: Int) {
         currentSubjectsNotJoined = studentWithSubjectsDAO.getStudentWithNotSubjects(id)
     }
     fun update(id: Int){
