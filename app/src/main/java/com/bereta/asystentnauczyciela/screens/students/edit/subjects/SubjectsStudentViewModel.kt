@@ -1,12 +1,12 @@
 package com.bereta.asystentnauczyciela.screens.students.edit.subjects
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.viewModelScope
+import android.util.Log
+import androidx.lifecycle.*
 import com.bereta.asystentnauczyciela.room.DAO.StudentWithSubjectsDAO
 import com.bereta.asystentnauczyciela.room.DAO.SubjectsDAO
 import com.bereta.asystentnauczyciela.room.database.AssistantDatabase
+import com.bereta.asystentnauczyciela.room.entities.Student
 import com.bereta.asystentnauczyciela.room.entities.Subject
 import com.bereta.asystentnauczyciela.screens.students.SharedViewModelStudent
 import kotlinx.coroutines.Dispatchers
@@ -14,28 +14,43 @@ import kotlinx.coroutines.launch
 
 class SubjectsStudentViewModel(
     application: Application,
-    private val sharedViewModel: SharedViewModelStudent
+    studentInput: Student
 ):
-    AndroidViewModel(application) {
-    private val student = sharedViewModel.get()
+    ViewModel() {
     private val studentWithSubjectsDAO : StudentWithSubjectsDAO = AssistantDatabase.getInstance(application).studentWithSubjectsDAO
-    private val subjectsDAO : SubjectsDAO = AssistantDatabase.getInstance(application).subjectsDAO
-    val subjectsJoined: LiveData<List<Subject>> = studentWithSubjectsDAO.getStudentWithSubjects(student!!.ID)
-    val subjectsNotJoined: LiveData<List<Subject>> = studentWithSubjectsDAO.getStudentWithNotSubjects(student!!.ID)
+    //private val _student = MutableLiveData<Student>()
+
+    val student = MutableLiveData(studentInput)
+    fun loadFeeds(value: Student) {
+        student.value = value
+        //livedata gets fired even though the value is not changed
+    }
+    private fun getCurrentStudent() = student.value!!
+    var currentSubjectsJoined: LiveData<List<Subject>> = studentWithSubjectsDAO.getStudentWithSubjects(getCurrentStudent().ID)
+    var currentSubjectsNotJoined: LiveData<List<Subject>> = studentWithSubjectsDAO.getStudentWithSubjects(getCurrentStudent().ID)
+    fun getSubjectsJoined(id: Int) {
+        currentSubjectsJoined = studentWithSubjectsDAO.getStudentWithSubjects(id)
+    }
+    fun getSubjectsNotJoined(id: Int) {
+        currentSubjectsNotJoined = studentWithSubjectsDAO.getStudentWithNotSubjects(id)
+    }
+    fun update(id: Int){
+        getSubjectsJoined(id)
+        getSubjectsNotJoined(id)
+    }
     fun addSubject(subject: Subject){
         viewModelScope.launch(Dispatchers.IO){
-            if (student != null) {
-                studentWithSubjectsDAO.insertStudentSubject(student.ID,subject.ID)
-                //studentWithSubjectsDAO.insertStudentSubject2(student,subject)
-            }
+            studentWithSubjectsDAO.insertStudentSubject(getCurrentStudent().ID,subject.ID)
+            Log.d("MVVM",getCurrentStudent().ID.toString())
+        //studentWithSubjectsDAO.insertStudentSubject2(student,subject)
         }
     }
     fun rmSubject(subject: Subject){
         viewModelScope.launch(Dispatchers.IO){
-            if (student != null) {
-                studentWithSubjectsDAO.deleteStudentSubject(student.ID,subject.ID)
-                //studentWithSubjectsDAO.insertStudentSubject2(student,subject)
-            }
+            studentWithSubjectsDAO.deleteStudentSubject(getCurrentStudent().ID,subject.ID)
+        //studentWithSubjectsDAO.insertStudentSubject2(student,subject)
+
         }
     }
+
 }

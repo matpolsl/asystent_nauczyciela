@@ -1,6 +1,7 @@
 package com.bereta.asystentnauczyciela.screens.students.edit.subjects
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bereta.asystentnauczyciela.R
+import com.bereta.asystentnauczyciela.room.entities.Student
 import com.bereta.asystentnauczyciela.room.entities.Subject
 import com.bereta.asystentnauczyciela.screens.students.SharedViewModelStudent
 
@@ -26,16 +28,29 @@ class RmSubjectsStudent: Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val factory = SubjectsStudentViewModelFactory((requireNotNull(this.activity).application),sharedViewModel)
+        val student = sharedViewModel.get()
+        val factory = SubjectsStudentViewModelFactory((requireNotNull(this.activity).application),sharedViewModel.get()!!)
         viewModel= ViewModelProvider(requireActivity(),factory)[SubjectsStudentViewModel::class.java]
-        val rmSubjectsStudentAdapter = RmSubjectsStudentAdapter(viewModel.subjectsJoined,viewModel)
-        viewModel.subjectsJoined.observe(viewLifecycleOwner,
-            Observer<List<Subject>> { rmSubjectsStudentAdapter.notifyDataSetChanged() }
-        )
-        val layoutManager= LinearLayoutManager(view.context)
-        view.findViewById<RecyclerView>(R.id.recycleView_student_subjects).let {
-            it.adapter=rmSubjectsStudentAdapter
-            it.layoutManager=layoutManager
+
+        sharedViewModel.selected.observe(viewLifecycleOwner, Observer<Student> { item ->
+            viewModel.loadFeeds(item)
+            viewModel.update(item.ID)
+            Log.d("Fragment",sharedViewModel.selected.value.toString())
+        })
+
+        if (student != null) {
+            viewModel.update(student.ID)
         }
+            val rmSubjectsStudentAdapter = RmSubjectsStudentAdapter(viewModel.currentSubjectsJoined,viewModel)
+            viewModel.currentSubjectsJoined.observe(viewLifecycleOwner,
+                Observer<List<Subject>> { rmSubjectsStudentAdapter.notifyDataSetChanged() }
+            )
+            val layoutManager= LinearLayoutManager(view.context)
+            view.findViewById<RecyclerView>(R.id.recycleView_student_subjects).let {
+                it.adapter=rmSubjectsStudentAdapter
+                it.layoutManager=layoutManager
+            }
+
+
     }
 }
