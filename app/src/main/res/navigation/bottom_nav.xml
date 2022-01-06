@@ -42,7 +42,11 @@
         android:id="@+id/subject"
         android:name="com.bereta.asystentnauczyciela.screens.subjects.home.SubjectPage"
         android:label="fragment_subject"
-        tools:layout="@layout/fragment_subject" />
+        tools:layout="@layout/fragment_subject" >
+        <action
+            android:id="@+id/action_subject_to_gradesList"
+            app:destination="@id/gradesList" />
+    </fragment>
     <fragment
         android:id="@+id/studentPage"
         android:name="com.bereta.asystentnauczyciela.screens.students.home.StudentPage"
@@ -52,4 +56,8 @@
             android:id="@+id/action_studentPage_to_studentsList"
             app:destination="@id/studentsList" />
     </fragment>
+    <fragment
+        android:id="@+id/gradesList"
+        android:name="com.bereta.asystentnauczyciela.screens.subjects.grades.list.GradesList"
+        android:label="GradesList" />
 </navigation>

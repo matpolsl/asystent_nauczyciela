@@ -34,12 +34,12 @@ class RmSubjectsStudent: Fragment() {
 
         sharedViewModel.selected.observe(viewLifecycleOwner, Observer<Student> { item ->
             viewModel.loadFeeds(item)
-            viewModel.update(item.ID)
+            viewModel.update(item.studentID)
             Log.d("Fragment",sharedViewModel.selected.value.toString())
         })
 
         if (student != null) {
-            viewModel.update(student.ID)
+            viewModel.update(student.studentID)
         }
             val rmSubjectsStudentAdapter = RmSubjectsStudentAdapter(viewModel.currentSubjectsJoined,viewModel)
             viewModel.currentSubjectsJoined.observe(viewLifecycleOwner,

@@ -36,10 +36,10 @@ class EditStudent : Fragment() {
         if (student != null) {
             textViewFirstName.text = student.firstName
             textViewLastName.text = student.lastName
-            textViewID.text = student.ID.toString()
+            textViewID.text = student.studentID.toString()
             textViewID.isEnabled = false
             (view.findViewById<Button>(R.id.button_update_student)).setOnClickListener{
-                val student = Student(student.ID,textViewFirstName.text.toString(),textViewLastName.text.toString())
+                val student = Student(student.studentID,textViewFirstName.text.toString(),textViewLastName.text.toString())
                 viewModel.updateStudent(student)
                 it.findNavController().navigate(R.id.action_studentPage_to_studentsList)
             }

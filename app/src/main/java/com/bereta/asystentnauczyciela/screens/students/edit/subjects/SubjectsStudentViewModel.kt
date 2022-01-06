@@ -26,8 +26,8 @@ class SubjectsStudentViewModel(
         //livedata gets fired even though the value is not changed
     }
     private fun getCurrentStudent() = student.value!!
-    var currentSubjectsJoined: LiveData<List<Subject>> = studentWithSubjectsDAO.getStudentWithSubjects(getCurrentStudent().ID)
-    var currentSubjectsNotJoined: LiveData<List<Subject>> = studentWithSubjectsDAO.getStudentWithSubjects(getCurrentStudent().ID)
+    var currentSubjectsJoined: LiveData<List<Subject>> = studentWithSubjectsDAO.getStudentWithSubjects(getCurrentStudent().studentID)
+    var currentSubjectsNotJoined: LiveData<List<Subject>> = studentWithSubjectsDAO.getStudentWithSubjects(getCurrentStudent().studentID)
     private fun getSubjectsJoined(id: Int) {
         currentSubjectsJoined = studentWithSubjectsDAO.getStudentWithSubjects(id)
     }
@@ -40,14 +40,14 @@ class SubjectsStudentViewModel(
     }
     fun addSubject(subject: Subject){
         viewModelScope.launch(Dispatchers.IO){
-            studentWithSubjectsDAO.insertStudentSubject(getCurrentStudent().ID,subject.ID)
-            Log.d("MVVM",getCurrentStudent().ID.toString())
+            studentWithSubjectsDAO.insertStudentSubject(getCurrentStudent().studentID,subject.ID)
+            Log.d("MVVM",getCurrentStudent().studentID.toString())
         //studentWithSubjectsDAO.insertStudentSubject2(student,subject)
         }
     }
     fun rmSubject(subject: Subject){
         viewModelScope.launch(Dispatchers.IO){
-            studentWithSubjectsDAO.deleteStudentSubject(getCurrentStudent().ID,subject.ID)
+            studentWithSubjectsDAO.deleteStudentSubject(getCurrentStudent().studentID,subject.ID)
         //studentWithSubjectsDAO.insertStudentSubject2(student,subject)
 
         }

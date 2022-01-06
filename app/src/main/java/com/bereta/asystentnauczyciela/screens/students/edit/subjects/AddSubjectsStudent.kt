@@ -37,9 +37,9 @@ class AddSubjectsStudent: Fragment() {
         sharedViewModel.selected.observe(viewLifecycleOwner, Observer<Student> { item ->
             viewModel.loadFeeds(item)
             Log.d("Fragment",sharedViewModel.selected.value.toString())
-            viewModel.update(item.ID)
+            viewModel.update(item.studentID)
         })
-        viewModel.update(student.ID)
+        viewModel.update(student.studentID)
         val addSubjectsStudentAdapter = AddSubjectsStudentAdapter(viewModel.currentSubjectsNotJoined,viewModel)
         viewModel.currentSubjectsNotJoined.observe(viewLifecycleOwner,
             Observer<List<Subject>> { addSubjectsStudentAdapter.notifyDataSetChanged() }

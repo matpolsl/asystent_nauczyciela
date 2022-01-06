@@ -1,18 +1,19 @@
 package com.bereta.asystentnauczyciela.screens.subjects.grades
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.LiveData
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bereta.asystentnauczyciela.R
 import com.bereta.asystentnauczyciela.room.entities.SubjectGrade
+import com.bereta.asystentnauczyciela.screens.subjects.SharedViewModel
 
 
-class GradesSubjectAdapter(private val grades: LiveData<List<SubjectGrade>>, private val viewModel: GradesSubjectViewModel)
+class GradesSubjectAdapter(private val grades: LiveData<List<SubjectGrade>>, private val viewModel: GradesSubjectViewModel, private val sharedViewModel: SharedViewModel)
     : RecyclerView.Adapter<GradesSubjectAdapter.GradesSubjectHolder>() {
     inner class GradesSubjectHolder(private val view: View): RecyclerView.ViewHolder(view)
     {
@@ -34,7 +35,8 @@ class GradesSubjectAdapter(private val grades: LiveData<List<SubjectGrade>>, pri
         holder.textViewWeight.text = weight
         holder.button.setOnClickListener {
             grades.value?.let{ existingGrades->
-                //viewModel.addSubject(existingSubject.get(position))
+                sharedViewModel.selectGrades(existingGrades[position])
+                it.findNavController().navigate(R.id.action_subject_to_gradesList)
             }
         }
         holder.buttondel.setOnClickListener {
@@ -45,5 +47,4 @@ class GradesSubjectAdapter(private val grades: LiveData<List<SubjectGrade>>, pri
     }
 
     override fun getItemCount()=grades.value?.size?:0
-
 }

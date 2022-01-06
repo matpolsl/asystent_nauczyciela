@@ -48,7 +48,7 @@ class GradesSubject : Fragment() {
         factory = GradesSubjectViewModelFactory((requireNotNull(this.activity).application),sharedViewModel.get()!!)
         viewModel= ViewModelProvider(requireActivity(),factory)[GradesSubjectViewModel::class.java]
         sharedViewModel.get()?.let { viewModel.setSubjectGrades(it.ID) }
-        val gradesSubjectAdapter = GradesSubjectAdapter(viewModel.currentSubjectGrades,viewModel)
+        val gradesSubjectAdapter = GradesSubjectAdapter(viewModel.currentSubjectGrades,viewModel,sharedViewModel)
         viewModel.currentSubjectGrades.observe(viewLifecycleOwner,
             Observer<List<SubjectGrade>> { gradesSubjectAdapter.notifyDataSetChanged() }
         )

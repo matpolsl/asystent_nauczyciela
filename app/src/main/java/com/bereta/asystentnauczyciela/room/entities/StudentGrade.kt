@@ -13,6 +13,8 @@ data class StudentGrade(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name="gradeID")
     var ID: Long=0L,
+    @ColumnInfo(name="studentID")
+    var studentID: Int,
     @ColumnInfo(name="gradesID")
     var gradesID: Long,
     @ColumnInfo(name="grade")
