@@ -13,21 +13,22 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.bereta.asystentnauczyciela.R
 import com.bereta.asystentnauczyciela.room.entities.Subject
+import com.bereta.asystentnauczyciela.screens.students.home.PagerAdapterStudent
 import com.bereta.asystentnauczyciela.screens.subjects.SharedViewModel
 import com.bereta.asystentnauczyciela.screens.subjects.list.SubjectsListAdapter
 import com.bereta.asystentnauczyciela.screens.subjects.list.SubjectsListViewModel
 import com.bereta.asystentnauczyciela.screens.subjects.list.SubjectsListViewModelFactory
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 
-class Subject : Fragment() {
-    private val sharedViewModel: SharedViewModel by activityViewModels<SharedViewModel>()
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
+class SubjectPage : Fragment() {
+    private lateinit var collectionAdapter: PagerAdapterSubject
+    private lateinit var viewPager2: ViewPager2
+    private lateinit var tabLayout: TabLayout
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,21 +36,18 @@ class Subject : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_subject, container, false)
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val textViewName=view.findViewById<TextView>(R.id.subject_name)
-        val textViewDate=view.findViewById<TextView>(R.id.day_text)
-        //val buttonShow=view.findViewById<Button>(R.id.button_show_subject)
-        //val buttonDel=view.findViewById<Button>(R.id.button_delete_subject)
-        val test = sharedViewModel.get()
-        if (test != null) {
-            textViewName.text = test.name
-            textViewDate.text = test.dayOfWeek
-            //Toast.makeText(this,"Dodano przedmiot o nazwie: $name", Toast.LENGTH_LONG).show()
-
-        }
-
+        collectionAdapter = PagerAdapterSubject(this)
+        viewPager2 = view.findViewById(R.id.pagerSubject)
+        viewPager2.adapter = collectionAdapter
+        tabLayout = view.findViewById(R.id.tabLayoutSubject)
+        TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
+            when(position){
+                0 -> tab.text = "Lista Ocen"
+                1 -> tab.text = "Edycja Przedmiotu"
+            }
+        }.attach()
     }
 
 }

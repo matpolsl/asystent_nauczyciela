@@ -40,7 +40,7 @@
         tools:layout="@layout/fragment_add_subject" />
     <fragment
         android:id="@+id/subject"
-        android:name="com.bereta.asystentnauczyciela.screens.subjects.home.Subject"
+        android:name="com.bereta.asystentnauczyciela.screens.subjects.home.SubjectPage"
         android:label="fragment_subject"
         tools:layout="@layout/fragment_subject" />
     <fragment

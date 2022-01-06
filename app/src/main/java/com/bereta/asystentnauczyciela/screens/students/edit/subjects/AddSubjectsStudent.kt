@@ -1,6 +1,7 @@
 package com.bereta.asystentnauczyciela.screens.students.edit.subjects
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bereta.asystentnauczyciela.R
+import com.bereta.asystentnauczyciela.room.entities.Student
 import com.bereta.asystentnauczyciela.room.entities.Subject
 import com.bereta.asystentnauczyciela.screens.students.SharedViewModelStudent
 
@@ -18,6 +20,7 @@ import com.bereta.asystentnauczyciela.screens.students.SharedViewModelStudent
 class AddSubjectsStudent: Fragment() {
     private val sharedViewModel: SharedViewModelStudent by activityViewModels<SharedViewModelStudent>()
     lateinit var viewModel: SubjectsStudentViewModel
+    lateinit var factory: SubjectsStudentViewModelFactory
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,10 +30,18 @@ class AddSubjectsStudent: Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val factory = SubjectsStudentViewModelFactory((requireNotNull(this.activity).application),sharedViewModel)
+        val student = sharedViewModel.get()!!
+
+        factory = SubjectsStudentViewModelFactory((requireNotNull(this.activity).application),sharedViewModel.get()!!)
         viewModel= ViewModelProvider(requireActivity(),factory)[SubjectsStudentViewModel::class.java]
-        val addSubjectsStudentAdapter = AddSubjectsStudentAdapter(viewModel.subjectsNotJoined,viewModel)
-        viewModel.subjectsNotJoined.observe(viewLifecycleOwner,
+        sharedViewModel.selected.observe(viewLifecycleOwner, Observer<Student> { item ->
+            viewModel.loadFeeds(item)
+            Log.d("Fragment",sharedViewModel.selected.value.toString())
+            viewModel.update(item.ID)
+        })
+        viewModel.update(student.ID)
+        val addSubjectsStudentAdapter = AddSubjectsStudentAdapter(viewModel.currentSubjectsNotJoined,viewModel)
+        viewModel.currentSubjectsNotJoined.observe(viewLifecycleOwner,
             Observer<List<Subject>> { addSubjectsStudentAdapter.notifyDataSetChanged() }
         )
         val layoutManager= LinearLayoutManager(view.context)
@@ -38,5 +49,8 @@ class AddSubjectsStudent: Fragment() {
             it.adapter=addSubjectsStudentAdapter
             it.layoutManager=layoutManager
         }
+
+
+
     }
 }

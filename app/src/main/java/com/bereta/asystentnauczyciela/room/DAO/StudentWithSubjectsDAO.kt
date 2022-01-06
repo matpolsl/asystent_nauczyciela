@@ -2,9 +2,7 @@ package com.bereta.asystentnauczyciela.room.DAO
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.bereta.asystentnauczyciela.room.entities.Student
 import com.bereta.asystentnauczyciela.room.entities.Subject
-import com.bereta.asystentnauczyciela.room.relation.StudentWithSubjects
 
 @Dao
 interface StudentWithSubjectsDAO {
