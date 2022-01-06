@@ -13,10 +13,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bereta.asystentnauczyciela.R
+import com.bereta.asystentnauczyciela.room.entities.Student
 import com.bereta.asystentnauczyciela.room.entities.Subject
-import com.bereta.asystentnauczyciela.room.entities.SubjectGrade
 import com.bereta.asystentnauczyciela.screens.subjects.SharedViewModel
-import com.bereta.asystentnauczyciela.screens.subjects.grades.add.AddGradesSubject
 
 class GradesSubject : Fragment() {
     private val sharedViewModel: SharedViewModel by activityViewModels<SharedViewModel>()
@@ -41,16 +40,12 @@ class GradesSubject : Fragment() {
             textViewDay.text = subject.dayOfWeek
             textViewTime.text = subject.timeFrom+" - "+subject.timeTo
         }
-        (view.findViewById<Button>(R.id.fab_add_grade_subject)).setOnClickListener{
-            val createDialog = AddGradesSubject()
-            createDialog.show(childFragmentManager, "NoticeDialogFragment")
-        }
         factory = GradesSubjectViewModelFactory((requireNotNull(this.activity).application),sharedViewModel.get()!!)
         viewModel= ViewModelProvider(requireActivity(),factory)[GradesSubjectViewModel::class.java]
-        sharedViewModel.get()?.let { viewModel.setSubjectGrades(it.ID) }
-        val gradesSubjectAdapter = GradesSubjectAdapter(viewModel.currentSubjectGrades,viewModel,sharedViewModel)
-        viewModel.currentSubjectGrades.observe(viewLifecycleOwner,
-            Observer<List<SubjectGrade>> { gradesSubjectAdapter.notifyDataSetChanged() }
+        sharedViewModel.get()?.let { viewModel.setSubjectStudents(it.ID) }
+        val gradesSubjectAdapter = GradesSubjectAdapter(viewModel.currentSubjectStudents,viewModel,sharedViewModel)
+        viewModel.currentSubjectStudents.observe(viewLifecycleOwner,
+            Observer<List<Student>> { gradesSubjectAdapter.notifyDataSetChanged() }
         )
         val layoutManager= LinearLayoutManager(view.context)
         view.findViewById<RecyclerView>(R.id.recyclerView_grades_subject).let {

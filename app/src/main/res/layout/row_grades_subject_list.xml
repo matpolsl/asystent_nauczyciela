@@ -44,11 +44,11 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/name_grades"
+                        android:id="@+id/name_student"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="15dp"
-                        android:text="Oceny końcowe"
+                        android:text="Imie i nazwisko"
                         android:textAppearance="@style/TextAppearance.AppCompat.Title"
                         android:textColor="#666666" />
 
@@ -58,32 +58,17 @@
                         android:orientation="horizontal"
                         >
 
-                        <TextView
-                            android:id="@+id/weight"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="15dp"
-                            android:layout_marginBottom="15dp"
-                            android:text="Waga: 100"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                            android:textColor="#999999" />
+
                     </LinearLayout>
                 </LinearLayout>
-                <Button
-                    android:id="@+id/button_delete_grades"
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:drawableEnd="@drawable/ic_baseline_delete_24"
-                    android:layout_marginEnd="10dp"
-                    android:drawableTint="#FF5858" />
+
             </LinearLayout>
 
             <Button
                 android:id="@+id/show_grades"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pokaż oceny" />
+                android:text="Edytuj oceny" />
         </LinearLayout>
 
 

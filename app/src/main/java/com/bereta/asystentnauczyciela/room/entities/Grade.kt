@@ -6,17 +6,19 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
-@Entity(tableName = "grades_subject_table")
+@Entity(tableName = "grades_table")
 //Parcelable annotation to make parcelable object
 @Parcelize
-data class SubjectGrade(
+data class Grade(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name="gradesID")
+    @ColumnInfo(name="gradeID")
     var ID: Long=0L,
     @ColumnInfo(name="subjectID")
-    var subjectID: Long=0L,
-    @ColumnInfo(name="name")
-    var name:String,
-    @ColumnInfo(name="weight")
-    var weight:Int,
+    var subjectID: Long,
+    @ColumnInfo(name="studentID")
+    var studentID: Int,
+    @ColumnInfo(name="grade")
+    var grade:Double,
+    @ColumnInfo(name="note")
+    var note:String,
 ): Parcelable
