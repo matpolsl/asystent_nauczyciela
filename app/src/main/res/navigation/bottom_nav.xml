@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/settings"
-        android:name="com.bereta.asystentnauczyciela.screens.settings.settings"
+        android:name="com.bereta.asystentnauczyciela.screens.settings.Settings"
         android:label="settings" />
     <fragment
         android:id="@+id/addSubject"
