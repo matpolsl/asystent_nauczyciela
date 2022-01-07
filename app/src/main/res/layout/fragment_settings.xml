@@ -41,12 +41,6 @@
         android:text="USuń studentów" />
 
     <Button
-        android:id="@+id/import_students"
-        android:layout_width="match_parent"
-        android:layout_marginHorizontal="50dp"
-        android:layout_height="wrap_content"
-        android:text="Importuj studentów z pliku" />
-    <Button
         android:id="@+id/raport"
         android:layout_width="match_parent"
         android:layout_marginHorizontal="50dp"

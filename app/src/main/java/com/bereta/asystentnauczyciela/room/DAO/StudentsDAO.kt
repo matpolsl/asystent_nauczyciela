@@ -17,4 +17,12 @@ interface StudentsDAO {
 
     @Query("SELECT * FROM students_table")
     fun getAll(): LiveData<List<Student>>
+
+    @Transaction
+    @Query("DELETE FROM students_table")
+    fun deleteAllStudents()
+
+    @Transaction
+    @Query("DELETE FROM students_subjects_table")
+    fun deleteAllStudentsRelation()
 }

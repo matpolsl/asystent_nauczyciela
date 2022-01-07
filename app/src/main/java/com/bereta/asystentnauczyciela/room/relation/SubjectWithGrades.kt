@@ -4,7 +4,6 @@ import androidx.room.Embedded
 import androidx.room.Junction
 import androidx.room.Relation
 import com.bereta.asystentnauczyciela.room.entities.Grade
-import com.bereta.asystentnauczyciela.room.entities.StudentGrade
 import com.bereta.asystentnauczyciela.room.entities.Subject
 
 
@@ -13,7 +12,7 @@ data class SubjectWithGrades(
     @Relation(
         parentColumn = "subjectID",
         entityColumn = "gradeID",
-        associateBy = Junction(StudentGrade::class)
+        associateBy = Junction(Grade::class)
     )
-    val subjects: List<Grade>
+    val grades: List<Grade>
 )

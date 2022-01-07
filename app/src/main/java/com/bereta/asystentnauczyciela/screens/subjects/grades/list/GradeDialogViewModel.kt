@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.bereta.asystentnauczyciela.room.DAO.StudentWithGradesDAO
 import com.bereta.asystentnauczyciela.room.database.AssistantDatabase
 import com.bereta.asystentnauczyciela.room.entities.Grade
-import com.bereta.asystentnauczyciela.room.entities.StudentGrade
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

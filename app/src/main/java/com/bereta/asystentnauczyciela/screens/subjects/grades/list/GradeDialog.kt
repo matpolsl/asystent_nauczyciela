@@ -11,8 +11,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import com.bereta.asystentnauczyciela.R
 import com.bereta.asystentnauczyciela.room.entities.Grade
-import com.bereta.asystentnauczyciela.room.entities.StudentGrade
-import com.bereta.asystentnauczyciela.room.relation.SubjectWithGrades
 import com.bereta.asystentnauczyciela.screens.subjects.SharedViewModel
 
 class GradeDialog: DialogFragment() {

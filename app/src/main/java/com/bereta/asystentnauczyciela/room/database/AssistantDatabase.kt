@@ -6,7 +6,7 @@ import androidx.room.RoomDatabase
 import com.bereta.asystentnauczyciela.room.DAO.*
 import com.bereta.asystentnauczyciela.room.entities.*
 
-@Database(entities=[Subject::class,Student::class,StudentSubjects::class, StudentGrade::class,Grade::class], version = 8, exportSchema = false)
+@Database(entities=[Subject::class,Student::class,StudentSubjects::class,Grade::class], version = 9, exportSchema = false)
 abstract class AssistantDatabase: RoomDatabase() {
     abstract val studentWithGradesDAO: StudentWithGradesDAO
     abstract val subjectsDAO: SubjectsDAO

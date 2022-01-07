@@ -1,24 +1,26 @@
 package com.bereta.asystentnauczyciela.screens.settings
 
-import android.app.Activity.RESULT_OK
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.os.ParcelFileDescriptor
-import android.provider.DocumentsContract
-import android.provider.MediaStore
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.bereta.asystentnauczyciela.R
-import com.github.doyaaaaaken.kotlincsv.dsl.csvReader
-import java.io.InputStream
+import com.bereta.asystentnauczyciela.room.entities.Grade
+import com.bereta.asystentnauczyciela.room.entities.Student
+import com.bereta.asystentnauczyciela.room.entities.Subject
+import com.bereta.asystentnauczyciela.room.relation.StudentWithSubjects
+import com.bereta.asystentnauczyciela.room.relation.SubjectWithGrades
+import com.bereta.asystentnauczyciela.room.relation.SubjectWithStudents
+import com.bereta.asystentnauczyciela.screens.students.add.AddStudentViewModel
 
 class Settings : Fragment() {
-
+    private lateinit var viewModel: SettingsViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,43 +31,34 @@ class Settings : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (view.findViewById<Button>(R.id.import_students)).setOnClickListener{
-            openFile()
+        viewModel = ViewModelProvider(this)[SettingsViewModel::class.java]
+        (view.findViewById<Button>(R.id.delete_grades)).setOnClickListener{
+            viewModel.deleteGrade()
+        }
+        (view.findViewById<Button>(R.id.delete_database)).setOnClickListener{
+            viewModel.deleteAll()
+        }
+        (view.findViewById<Button>(R.id.delete_students)).setOnClickListener{
+            viewModel.deleteStudents()
+        }
+        (view.findViewById<Button>(R.id.delete_subjects)).setOnClickListener{
+            viewModel.deleteSubjects()
         }
         (view.findViewById<Button>(R.id.raport)).setOnClickListener{
             val sendIntent: Intent = Intent().apply {
                 action = Intent.ACTION_SEND
-                putExtra(Intent.EXTRA_TEXT, "This is my text to send.")
+                putExtra(Intent.EXTRA_TEXT, viewModel.raport())
                 type = "text/plain"
             }
 
-            val shareIntent = Intent.createChooser(sendIntent, null)
+            val shareIntent = Intent.createChooser(sendIntent, "Raport")
             startActivity(shareIntent)
         }
-    }
-    fun read(file: String) {
-        csvReader().open(file) {
-            readAllAsSequence().forEach { row ->
-                //Do something
-                Log.d("test", row.toString()) //[a, b, c]
-            }
-        }
-    }
-    fun openFile() {
-        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
-            addCategory(Intent.CATEGORY_OPENABLE)
-            type = "*/*"
-        }
-
-        startActivityForResult(intent, 2222)
-    }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        // Selected a file to load
-        if ((requestCode == 2222) && (resultCode == RESULT_OK)) {
-            data?.data?.also { uri ->
-
-            }
-        }
+        viewModel.students.observe(viewLifecycleOwner,
+            Observer<List<Student>> {  }
+        )
+        viewModel.grades.observe(viewLifecycleOwner,
+            Observer<List<SubjectWithGrades>> {  }
+        )
     }
 }
