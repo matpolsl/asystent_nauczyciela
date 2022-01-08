@@ -10,6 +10,9 @@ interface SubjectsDAO {
     @Insert
     fun insertSubject(subject: Subject)
 
+    @Update
+    fun updateSubject(subject: Subject)
+
     @Delete
     fun deleteSubject(subject: Subject)
 

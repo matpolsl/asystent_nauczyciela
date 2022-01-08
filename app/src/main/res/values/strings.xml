@@ -9,4 +9,5 @@
     <string name="subjects">Przedmioty</string>
     <string name="students">Studenci</string>
     <string name="settings">Ustawienia</string>
+    <string name="edycja_przedmiotu">Edycja przedmiotu</string>
 </resources>

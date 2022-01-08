@@ -16,7 +16,7 @@ import java.time.LocalTime
 
 
 class AddSubject : Fragment() {
-    private var dayOfWeek = "Poniedziałek"
+    private var dayOfWeek = "Poniedziałek" // default value
     lateinit var viewModel: SubjectViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,8 +33,6 @@ class AddSubject : Fragment() {
         view.findViewById<TimePicker>(R.id.time_picker_from).setIs24HourView(true)
         view.findViewById<TimePicker>(R.id.time_picker_to).setIs24HourView(true)
         val spinner: Spinner = view.findViewById(R.id.day_spinner)
-
-
         ArrayAdapter.createFromResource(
             this.activity!!.applicationContext,
             R.array.week_array,
@@ -59,8 +57,5 @@ class AddSubject : Fragment() {
             // your code here
             }
         }
-
-
     }
-
 }
