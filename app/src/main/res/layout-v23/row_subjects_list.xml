@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -8,7 +9,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
         android:layout_weight="10"
         >
 
@@ -16,14 +17,12 @@
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lorem ipsum"
             android:textSize="25sp" />
 
         <TextView
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lorem ipsum"
             android:textSize="15sp" />
     </LinearLayout>
 
@@ -35,7 +34,8 @@
         android:layout_marginEnd="2dp"
         android:layout_weight="2"
         android:drawableLeft="@drawable/ic_baseline_open_in_new_24"
-        android:drawableTint="@color/white" />
+        android:drawableTint="@color/white"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/button_delete_subject"
@@ -45,6 +45,7 @@
         android:layout_marginEnd="2dp"
         android:layout_weight="2"
         android:drawableLeft="@drawable/ic_baseline_delete_24"
-        android:drawableTint="#FF5858" />
+        android:drawableTint="#FF5858"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </LinearLayout>

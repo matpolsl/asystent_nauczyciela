@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
@@ -9,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="5dp"
-        android:text="Dodaj grupę ocen"
+        android:text="@string/dodaj_grup_ocen"
         android:textSize="20sp" />
 
     <EditText
@@ -20,17 +21,24 @@
         android:layout_marginTop="16dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="4dp"
-        android:hint="Nazwa"
-        android:inputType="textPersonName" />
+        android:autofillHints=""
+        android:hint="@string/nazwa"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        tools:ignore="TextContrastCheck" />
+
     <EditText
         android:id="@+id/weight"
-        android:inputType="numberDecimal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="16dp"
+        android:autofillHints=""
         android:fontFamily="sans-serif"
-        android:hint="Waga"/>
+        android:hint="@string/waga"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        tools:ignore="TextContrastCheck" />
 </LinearLayout>

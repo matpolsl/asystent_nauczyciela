@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
@@ -10,38 +11,48 @@
         android:layout_height="match_parent"
         android:layout_margin="5dp"
         android:textSize="20sp"
-        android:text="Dodaj studenta" />
+        android:text="@string/dodaj_studenta" />
 
     <EditText
         android:id="@+id/first_name"
-        android:inputType="textPersonName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginLeft="4dp"
+        android:layout_marginTop="16dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="4dp"
-        android:hint="Imię" />
+        android:hint="@string/imi"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:autofillHints="" />
+
     <EditText
         android:id="@+id/last_name"
-        android:inputType="textPersonName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="16dp"
+        android:autofillHints=""
         android:fontFamily="sans-serif"
-        android:hint="Nazwisko"/>
+        android:hint="@string/nazwisko"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        tools:ignore="TextContrastCheck" />
+
     <EditText
         android:id="@+id/numberID"
-        android:inputType="numberDecimal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="16dp"
+        android:autofillHints=""
         android:fontFamily="sans-serif"
-        android:hint="Numer albumu"/>
+        android:hint="@string/numer_albumu"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        tools:ignore="TextContrastCheck" />
 </LinearLayout>

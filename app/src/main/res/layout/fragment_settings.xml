@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout4"
     android:layout_width="match_parent"
@@ -11,39 +10,43 @@
     <Button
         android:id="@+id/delete_database"
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="50dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
         android:backgroundTint="@android:color/holo_red_light"
-        android:text="Usuń Bazę Danych" />
+        android:text="@string/usu_baz_danych"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/delete_subjects"
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="50dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
         android:backgroundTint="@android:color/holo_red_light"
-        android:text="Usuń Przedmioty" />
+        android:text="@string/usu_przedmioty"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/delete_grades"
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="50dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
         android:backgroundTint="@android:color/holo_red_light"
-        android:text="Usuń Oceny" />
+        android:text="@string/usu_oceny"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/delete_students"
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="50dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
         android:backgroundTint="@android:color/holo_red_light"
-        android:text="USuń studentów" />
+        android:text="@string/usu_student_w"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/raport"
         android:layout_width="match_parent"
         android:layout_marginHorizontal="50dp"
         android:layout_height="wrap_content"
-        android:text="Wyślij raport" />
+        android:text="@string/wy_lij_raport" />
 </LinearLayout>

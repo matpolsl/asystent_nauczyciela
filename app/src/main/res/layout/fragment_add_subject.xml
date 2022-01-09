@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/add_subject_fragment"
                 android:gravity="center_horizontal"
-                android:textSize="32dp"/>
+                android:textSize="32sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -39,10 +39,11 @@
             <EditText
                 android:id="@+id/edit_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:hint="Nazwa przedmiotu" />
+                android:layout_height="48dp"
+                android:hint="@string/nazwa_przedmiotu"
+                android:inputType="text"
+                tools:ignore="TextContrastCheck"
+                android:autofillHints="" />
 
         </LinearLayout>
 
@@ -54,14 +55,14 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kiedy (dzień)" />
+                android:text="@string/kiedy_dzie" />
 
             <Spinner
                 android:id="@+id/day_spinner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Dzień"
-                />
+                android:layout_height="48dp"
+                android:hint="@string/dzie"
+                tools:ignore="SpeakableTextPresentCheck" />
 
 
         </LinearLayout>
@@ -74,8 +75,8 @@
                 android:id="@+id/tymczasowy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Godzina:"
-                android:textSize="20dp"/>
+                android:text="@string/godzina"
+                android:textSize="20sp"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -93,7 +94,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="-"
+                android:text="@string/space"
                 android:gravity="center"
                 android:textSize="42sp" />
             <TimePicker
@@ -112,7 +113,7 @@
                 android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Zapisz" />
+                android:text="@string/zapisz" />
         </LinearLayout>
 
     </LinearLayout>

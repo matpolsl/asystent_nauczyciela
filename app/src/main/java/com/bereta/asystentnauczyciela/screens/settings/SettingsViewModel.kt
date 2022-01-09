@@ -10,12 +10,8 @@ import com.bereta.asystentnauczyciela.room.DAO.StudentWithSubjectsDAO
 import com.bereta.asystentnauczyciela.room.DAO.StudentsDAO
 import com.bereta.asystentnauczyciela.room.DAO.SubjectsDAO
 import com.bereta.asystentnauczyciela.room.database.AssistantDatabase
-import com.bereta.asystentnauczyciela.room.entities.Grade
 import com.bereta.asystentnauczyciela.room.entities.Student
-import com.bereta.asystentnauczyciela.room.entities.Subject
-import com.bereta.asystentnauczyciela.room.relation.StudentWithSubjects
 import com.bereta.asystentnauczyciela.room.relation.SubjectWithGrades
-import com.bereta.asystentnauczyciela.room.relation.SubjectWithStudents
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -67,14 +63,15 @@ class SettingsViewModel(application: Application):
 
 
     fun raport(): String {
-        var respond = "";
-            var lista = grades.value
+        var respond = ""
+        var student:Student?
+            val lista = grades.value
             val studentList = students.value
             if (lista != null && studentList != null) {
                 for (sub in lista) {
                     respond += "Przedmiot: " + sub.subject.name + " \n"
                     for (stud in sub.grades) {
-                        var student = studentList.find { it.studentID == stud.studentID }
+                        student = studentList.find { it.studentID == stud.studentID }
                         if (student != null)
                             respond += student.firstName + " " + student.lastName + " ocena: " + stud.grade + " notatka: " + stud.note + "\n"
                     }

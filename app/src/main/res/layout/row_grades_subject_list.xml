@@ -48,18 +48,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="15dp"
-                        android:text="Imie i nazwisko"
+                        android:text=""
                         android:textAppearance="@style/TextAppearance.AppCompat.Title"
                         android:textColor="#666666" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        >
-
-
-                    </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
@@ -68,7 +60,7 @@
                 android:id="@+id/show_grades"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Edytuj oceny" />
+                android:text="@string/edytuj_oceny" />
         </LinearLayout>
 
 
